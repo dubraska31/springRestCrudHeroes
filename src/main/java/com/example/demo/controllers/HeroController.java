@@ -33,9 +33,9 @@ public class HeroController {
 		return heroService.createHero(hero);
 	}
 
-	@PutMapping("/heroes/{id}")
-	public Hero updateHero(@PathVariable int id, @RequestBody Hero newHero) {
-		return heroService.updateHero(id, newHero);
+	@PutMapping("/heroes")
+    public Hero updateHero(@RequestBody Hero newHero) {
+		return heroService.updateHero(newHero);
 	}
 
 	@DeleteMapping("/heroes/{id}")

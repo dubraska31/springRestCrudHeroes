@@ -23,16 +23,22 @@ public class HeroService {
 	}
 	
 	public Hero createHero(Hero hero) {
-		int id=heroesList.get(heroesList.size()-1).getId() +1;
-		hero.setId(id);
-		heroesList.add(hero);
+		if (heroesList.size()>0) {
+			int id=heroesList.get(heroesList.size()-1).getId() +1;
+			hero.setId(id);
+			heroesList.add(hero);
+		}else {
+			hero.setId(1);
+			heroesList.add(hero);
+		}
+		
 		return hero;
 		
 	}
 	
-	public Hero updateHero(int id, Hero newHero) {
+	public Hero updateHero(Hero newHero) {
 		for (Hero oldHero : heroesList) {
-			if (oldHero.getId() == id) {
+			if (oldHero.getId() == newHero.getId()) {
 				int pos = heroesList.indexOf(oldHero); 
 				heroesList.set(pos, newHero);
 				break;
