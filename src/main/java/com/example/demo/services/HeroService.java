@@ -23,8 +23,11 @@ public class HeroService {
 	}
 	
 	public Hero createHero(Hero hero) {
+		int id=heroesList.get(heroesList.size()-1).getId() +1;
+		hero.setId(id);
 		heroesList.add(hero);
 		return hero;
+		
 	}
 	
 	public Hero updateHero(int id, Hero newHero) {
