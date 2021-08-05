@@ -1,4 +1,4 @@
-package com.heroes.models;
+package com.heroes.model;
 
 public class Hero {
 

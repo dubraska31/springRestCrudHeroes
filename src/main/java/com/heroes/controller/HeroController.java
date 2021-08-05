@@ -1,4 +1,4 @@
-package com.heroes.controllers;
+package com.heroes.controller;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.heroes.models.Hero;
-import com.heroes.services.HeroService;
+import com.heroes.model.Hero;
+import com.heroes.service.HeroService;
 
 @RestController
 public class HeroController {

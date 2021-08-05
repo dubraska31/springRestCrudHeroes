@@ -1,8 +1,8 @@
-package com.heroes.services;
+package com.heroes.service;
 
 import java.util.ArrayList;
 import org.springframework.stereotype.Service;
-import com.heroes.models.Hero;
+import com.heroes.model.Hero;
 
 @Service
 public class HeroService {
