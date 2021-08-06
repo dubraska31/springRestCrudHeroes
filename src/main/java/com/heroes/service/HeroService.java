@@ -1,66 +1,41 @@
 package com.heroes.service;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.heroes.model.Hero;
+import com.heroes.repository.HeroRepository;
 
 @Service
 public class HeroService {
 
-	ArrayList<Hero> heroesList = new ArrayList<Hero>();
+	@Autowired
+	HeroRepository heroRepository;
 
-	public ArrayList<Hero> getHeroes() {
-		Hero hero = new Hero(1, "dubraska");
-		
-		heroesList.add(hero);
-		
-		return heroesList;
+	public List<Hero> getHero() {
+		return heroRepository.findAll();
 	}
 
-	public Hero getHeroById(int id) {
-		for (Hero hero : heroesList) {
-			if (hero.getId() == id) {
-				return hero;
-			}
-		}
-		return null;
+	public Hero getHeroById(long idHero) {
+		return heroRepository.findById(idHero).get();
 	}
 
 	public Hero createHero(Hero hero) {
-		if (heroesList.size() > 0) {
-			int id = heroesList.get(heroesList.size() - 1).getId() + 1;
-			hero.setId(id);
-			heroesList.add(hero);
-		} else {
-			hero.setId(1);
-			heroesList.add(hero);
-		}
-
-		return hero;
-
+		return heroRepository.save(hero);
 	}
 
-	public Hero updateHero(Hero newHero) {
-		for (Hero oldHero : heroesList) {
-			if (oldHero.getId() == newHero.getId()) {
-				int pos = heroesList.indexOf(oldHero);
-				heroesList.set(pos, newHero);
-				break;
-			}
-		}
-
-		return newHero;
+	public Hero updateHero(Hero hero) {
+		return heroRepository.save(hero);
 	}
 
-	public void deleteHero(int id) {
-		int pos = -1;
-		for (Hero oldHero : heroesList) {
-			if (oldHero.getId() == id) {
-				pos = heroesList.indexOf(oldHero);
-				break;
-			}
+	public void deleteHero(long idHero) {
+		try {
+			heroRepository.deleteById(idHero);
+		} catch (Exception e) {
+			System.out.println("Exception: " + e.getMessage());
 		}
-
-		heroesList.remove(pos);
 	}
+
 }

@@ -1,6 +1,7 @@
 package com.heroes.controller;
 
-import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.heroes.model.Hero;
 import com.heroes.service.HeroService;
 
@@ -19,13 +21,13 @@ public class HeroController {
 	HeroService heroService;
 
 	@GetMapping("/heroes")
-	public ArrayList<Hero> getHeroes() {
-		return heroService.getHeroes();
+	public List<Hero> getHero() {
+		return heroService.getHero();
 	}
 
-	@GetMapping("/heroes/{id}")
-	public Hero getHeroById(@PathVariable int id) {
-		return heroService.getHeroById(id);
+	@GetMapping("/heroes/{idHero}")
+	public Hero getHeroById(@PathVariable long idHero) {
+		return heroService.getHeroById(idHero);
 	}
 
 	@PostMapping("/heroes")
@@ -34,12 +36,16 @@ public class HeroController {
 	}
 
 	@PutMapping("/heroes")
-	public Hero updateHero(@RequestBody Hero newHero) {
-		return heroService.updateHero(newHero);
+	public Hero updateHero(@RequestBody Hero hero) {
+		return heroService.updateHero(hero);
 	}
 
-	@DeleteMapping("/heroes/{id}")
-	public void deleteHero(@PathVariable int id) {
-		heroService.deleteHero(id);
+	@DeleteMapping("/heroes/{idHero}")
+	public void deleteHero(@PathVariable long idHero) {
+		try {
+			heroService.deleteHero(idHero);
+		} catch (Exception e) {
+			System.out.println("Exception: " + e.getMessage());
+		}
 	}
 }
