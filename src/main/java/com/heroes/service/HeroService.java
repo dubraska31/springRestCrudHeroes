@@ -14,7 +14,7 @@ public class HeroService {
 	@Autowired
 	HeroRepository heroRepository;
 
-	public List<Hero> getHero() {
+	public List<Hero> getAllHeroes() {
 		return heroRepository.findAll();
 	}
 
@@ -22,7 +22,7 @@ public class HeroService {
 		return heroRepository.findById(idHero).get();
 	}
 
-	public Hero createHero(Hero hero) {
+	public Hero saveHero(Hero hero) {
 		return heroRepository.save(hero);
 	}
 

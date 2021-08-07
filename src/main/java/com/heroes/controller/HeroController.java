@@ -21,8 +21,8 @@ public class HeroController {
 	HeroService heroService;
 
 	@GetMapping("/heroes")
-	public List<Hero> getHero() {
-		return heroService.getHero();
+	public List<Hero> getAllHeroes() {
+		return heroService.getAllHeroes();
 	}
 
 	@GetMapping("/heroes/{idHero}")
@@ -31,8 +31,8 @@ public class HeroController {
 	}
 
 	@PostMapping("/heroes")
-	public Hero createHero(@RequestBody Hero hero) {
-		return heroService.createHero(hero);
+	public Hero saveHero(@RequestBody Hero hero) {
+		return heroService.saveHero(hero);
 	}
 
 	@PutMapping("/heroes")

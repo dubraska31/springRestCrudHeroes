@@ -16,9 +16,8 @@ public class Hero {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idHero;
 
-	private long dni;
-	private String nombre;
-	private String apellido;
+	private String name;
+	private String surname;
 
 	public long getIdHero() {
 		return idHero;
@@ -28,28 +27,20 @@ public class Hero {
 		this.idHero = idHero;
 	}
 
-	public long getDni() {
-		return dni;
+	public String getName() {
+		return name;
 	}
 
-	public void setDni(long dni) {
-		this.dni = dni;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 }
